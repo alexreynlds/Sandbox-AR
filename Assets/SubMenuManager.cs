@@ -19,11 +19,15 @@ public class SubMenuManager : MonoBehaviour
 
     public void OpenMenu()
     {
+        GameObject.Find("UICanvas").GetComponent<UIManager>().SubMenuOpen =
+            true;
         Anim.Play(animationNames[0]);
     }
 
     public void CloseMenu()
     {
+        GameObject.Find("UICanvas").GetComponent<UIManager>().SubMenuOpen =
+            false;
         Anim.Play(animationNames[1]);
     }
 

@@ -569,9 +569,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 447341348}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: toggleOptionsMenu
+      - m_Target: {fileID: 998309172}
+        m_TargetAssemblyTypeName: SubMenuManager, Assembly-CSharp
+        m_MethodName: CloseMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -874,6 +874,7 @@ MonoBehaviour:
   openMenuAnimation: {fileID: 7400000, guid: 6ef3cde85f9ec47dabbca1ce32c014dc, type: 2}
   closeMenuAnimation: {fileID: 7400000, guid: ba8e8c1788bc446efb725dd4e36d51ae, type: 2}
   anim: {fileID: 0}
+  SubMenuOpen: 0
 --- !u!111 &447341349
 Animation:
   m_ObjectHideFlags: 0
@@ -2944,9 +2945,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 447341348}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: toggleOptionsMenu
+      - m_Target: {fileID: 988139950}
+        m_TargetAssemblyTypeName: SubMenuManager, Assembly-CSharp
+        m_MethodName: CloseMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -14,11 +14,14 @@ public class UIManager : MonoBehaviour
 
     public Animation anim;
 
+    public bool SubMenuOpen;
+
     // Start is called before the first frame update
     void Start()
     {
         menuOpen = false;
         anim = GetComponent<Animation>();
+        SubMenuOpen = false;
     }
 
     // Update is called once per frame
@@ -32,7 +35,7 @@ public class UIManager : MonoBehaviour
         {
             menu.GetComponent<SubMenuManager>().CloseMenu();
         }
-        else
+        if (!menu.activeSelf && !SubMenuOpen)
         {
             menu.SetActive(true);
             menu.GetComponent<SubMenuManager>().OpenMenu();
@@ -53,16 +56,12 @@ public class UIManager : MonoBehaviour
 
     private void openMenu()
     {
-        // anim.clip = openMenuAnimation;
-        // anim.Play();
         anim.Play("OpenMenu");
         menuOpen = true;
     }
 
     private void closeMenu()
     {
-        // anim.clip = closeMenuAnimation;
-        // anim.Play();
         anim.Play("CloseMenu");
         menuOpen = false;
     }
