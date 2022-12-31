@@ -19,6 +19,13 @@ public class SubMenuManager : MonoBehaviour
 
     public void OpenMenu()
     {
+        if (this.gameObject.name == "CollectionMenu")
+        {
+            this
+                .gameObject
+                .GetComponent<CollectionMenuScript>()
+                .RefreshCollection();
+        }
         GameObject.Find("UICanvas").GetComponent<UIManager>().SubMenuOpen =
             true;
         Anim.Play(animationNames[0]);

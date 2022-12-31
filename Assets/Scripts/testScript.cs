@@ -24,6 +24,12 @@ public class testScript : MonoBehaviour
         foreach (var newImage in eventArgs.added)
         {
             Debug.Log("Debug >> Added: " + newImage.referenceImage.name);
+            GameObject
+                .Find("GameManager")
+                .GetComponent<GameManagerScript>()
+                .ownedCards
+                .Add(new DinoCard(newImage.referenceImage.name,
+                    "Big and scary"));
         }
 
         foreach (var updatedImage in eventArgs.updated)
