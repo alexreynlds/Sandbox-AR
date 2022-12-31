@@ -23,19 +23,19 @@ public class testScript : MonoBehaviour
     {
         foreach (var newImage in eventArgs.added)
         {
-            Debug.Log("Added");
+            Debug.Log("Debug >> Added: " + newImage.referenceImage.name);
         }
 
         foreach (var updatedImage in eventArgs.updated)
         {
             // Handle updated event
-            Debug.Log("Updated");
+            Debug.Log("Debug >> Updated: " + updatedImage.referenceImage.name);
         }
 
         foreach (var removedImage in eventArgs.removed)
         {
             // Handle removed event
-            Debug.Log("Removed");
+            Debug.Log("Debug >> Removed: " + removedImage.referenceImage.name);
         }
     }
 }

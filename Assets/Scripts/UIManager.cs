@@ -8,10 +8,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private bool menuOpen;
 
-    private bool optionsMenuOpen;
-
-    public GameObject OptionsMenu;
-
     public AnimationClip openMenuAnimation;
 
     public AnimationClip closeMenuAnimation;
@@ -28,6 +24,19 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public void toggleSubMenu(GameObject menu)
+    {
+        if (menu.activeSelf)
+        {
+            menu.GetComponent<SubMenuManager>().CloseMenu();
+        }
+        else
+        {
+            menu.SetActive(true);
+            menu.GetComponent<SubMenuManager>().OpenMenu();
+        }
     }
 
     public void toggleMenu()
@@ -56,39 +65,5 @@ public class UIManager : MonoBehaviour
         // anim.Play();
         anim.Play("CloseMenu");
         menuOpen = false;
-    }
-
-    public void toggleOptionsMenu()
-    {
-        if (optionsMenuOpen)
-        {
-            closeOptionsMenu();
-        }
-        else
-        {
-            openOptionsMenu();
-        }
-    }
-
-    private void openOptionsMenu()
-    {
-        anim.Play("OptionsMenuOpen");
-        optionsMenuOpen = true;
-    }
-
-    private void closeOptionsMenu()
-    {
-        anim.Play("OptionsMenuClose");
-        optionsMenuOpen = false;
-    }
-
-    private void disableOptionsMenu()
-    {
-        OptionsMenu.SetActive(false);
-    }
-
-    private void enableOptionsMenu()
-    {
-        OptionsMenu.SetActive(true);
     }
 }
