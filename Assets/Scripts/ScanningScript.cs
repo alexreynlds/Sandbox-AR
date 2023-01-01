@@ -59,9 +59,9 @@ public class ScanningScript : MonoBehaviour
 
     public void StopScanning()
     {
-        m_TrackedImageManager.trackedImagesChanged -= OnChanged;
-
+        // m_TrackedImageManager.trackedImagesChanged -= OnChanged;
         m_TrackedImageManager.enabled = false;
+        GameObject.Find("AR Session").GetComponent<ARSession>().Reset();
         Scanning = false;
         scanningUI.SetActive(false);
     }
