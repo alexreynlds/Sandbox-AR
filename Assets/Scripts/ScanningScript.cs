@@ -18,7 +18,7 @@ public class ScanningScript : MonoBehaviour
     [SerializeField]
     private GameObject scanningUI;
 
-    private bool Scanning;
+    public bool Scanning;
 
     void Awake()
     {
@@ -36,18 +36,17 @@ public class ScanningScript : MonoBehaviour
         Scanning = false;
     }
 
-    public void ToggleScan()
-    {
-        if (Scanning)
-        {
-            StopScanning();
-        }
-        else
-        {
-            StartScanning();
-        }
-    }
-
+    // public void ToggleScan()
+    // {
+    //     if (Scanning)
+    //     {
+    //         StopScanning();
+    //     }
+    //     else
+    //     {
+    //         StartScanning();
+    //     }
+    // }
     public void StartScanning()
     {
         CreateLibrary();

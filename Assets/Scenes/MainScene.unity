@@ -901,7 +901,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 296.6, y: 1187.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &279640665
@@ -1165,10 +1165,10 @@ RectTransform:
   m_Father: {fileID: 998309170}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 424}
-  m_SizeDelta: {x: 459.4989, y: 90.7056}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -69.545654}
+  m_SizeDelta: {x: 459.5, y: 139.09131}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &395554125
 MonoBehaviour:
@@ -1416,7 +1416,6 @@ GameObject:
   - component: {fileID: 447341344}
   - component: {fileID: 447341348}
   - component: {fileID: 447341349}
-  - component: {fileID: 447341350}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -1525,6 +1524,8 @@ MonoBehaviour:
   closeMenuAnimation: {fileID: 7400000, guid: ba8e8c1788bc446efb725dd4e36d51ae, type: 2}
   anim: {fileID: 0}
   SubMenuOpen: 0
+  currentlyOpenMenu: {fileID: 0}
+  XROrigin: {fileID: 1534659790}
 --- !u!111 &447341349
 Animation:
   m_ObjectHideFlags: 0
@@ -1544,22 +1545,6 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &447341350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447341343}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a57d516033cba462796b91f5b39d87f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackedImageManager: {fileID: 0}
-  m_ReferenceLibrary: {fileID: 0}
-  cardImages: []
-  scanningUI: {fileID: 0}
 --- !u!1 &513665682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,6 +1940,7 @@ GameObject:
   - component: {fileID: 596113737}
   - component: {fileID: 596113736}
   - component: {fileID: 596113738}
+  - component: {fileID: 596113739}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2007,6 +1993,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 158d50201d08c4c52b819678250fa093, type: 3}
   - {fileID: 21300000, guid: 956da6dfde1e94dddb7fb040ac4b7af8, type: 3}
   - {fileID: 21300000, guid: d1758f144fb6d4121b514a0e77268ca6, type: 3}
+--- !u!114 &596113739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596113735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00aa2168bab8145e1a2a5db5c1cd5cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6292888672744572528, guid: 80419013c23d74d979c64916cb757bc4, type: 3}
+  arRaycastManager: {fileID: 0}
+  arCamera: {fileID: 104378984}
 --- !u!1 &609233576
 GameObject:
   m_ObjectHideFlags: 0
@@ -2973,7 +2974,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 1000}
+  m_SizeDelta: {x: 725, y: 1250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &998309171
 Animation:
@@ -3224,9 +3225,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1534659799}
-        m_TargetAssemblyTypeName: ScanningScript, Assembly-CSharp
-        m_MethodName: ToggleScan
+      - m_Target: {fileID: 447341348}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: toggleScan
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3311,7 +3312,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 250}
+  m_AnchoredPosition: {x: 0, y: 963}
   m_SizeDelta: {x: 400, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1108603711
@@ -3360,7 +3361,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 596113736}
         m_TargetAssemblyTypeName: GameManagerScript, Assembly-CSharp
-        m_MethodName: ResetCollection
+        m_MethodName: UnlockAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3970,6 +3971,7 @@ GameObject:
   - component: {fileID: 1534659792}
   - component: {fileID: 1534659798}
   - component: {fileID: 1534659799}
+  - component: {fileID: 1534659800}
   m_Layer: 0
   m_Name: XROrigin
   m_TagString: Untagged
@@ -4044,6 +4046,21 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 777bd16c859f144f8b894c459d4cf69f, type: 3}
   - {fileID: 2800000, guid: eb42c0d23b29747a29fc6b0c5034b8f4, type: 3}
   scanningUI: {fileID: 1123238929}
+  Scanning: 0
+--- !u!114 &1534659800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534659790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlanePrefab: {fileID: 109779604023541454, guid: 8144c2cd7cd2541bb9ae19219512b391, type: 3}
+  m_DetectionMode: 1
 --- !u!1 &1546121177
 GameObject:
   m_ObjectHideFlags: 0
@@ -5919,7 +5936,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reset Collection
+  m_text: 'Cheat: All Cards'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

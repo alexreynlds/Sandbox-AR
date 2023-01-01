@@ -16,6 +16,10 @@ public class UIManager : MonoBehaviour
 
     public bool SubMenuOpen;
 
+    public GameObject currentlyOpenMenu;
+
+    public GameObject XROrigin;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +39,26 @@ public class UIManager : MonoBehaviour
         {
             menu.GetComponent<SubMenuManager>().CloseMenu();
         }
-        if (!menu.activeSelf && !SubMenuOpen)
+        if (!menu.activeSelf)
         {
             menu.SetActive(true);
             menu.GetComponent<SubMenuManager>().OpenMenu();
+        }
+    }
+
+    public void toggleScan()
+    {
+        if (XROrigin.GetComponent<ScanningScript>().Scanning)
+        {
+            XROrigin.GetComponent<ScanningScript>().StopScanning();
+        }
+        else
+        {
+            if (currentlyOpenMenu != null)
+            {
+                currentlyOpenMenu.GetComponent<SubMenuManager>().CloseMenu();
+            }
+            XROrigin.GetComponent<ScanningScript>().StartScanning();
         }
     }
 

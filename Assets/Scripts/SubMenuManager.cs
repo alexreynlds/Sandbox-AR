@@ -19,6 +19,21 @@ public class SubMenuManager : MonoBehaviour
 
     public void OpenMenu()
     {
+        if (
+            GameObject
+                .Find("UICanvas")
+                .GetComponent<UIManager>()
+                .currentlyOpenMenu !=
+            null
+        )
+        {
+            GameObject
+                .Find("UICanvas")
+                .GetComponent<UIManager>()
+                .currentlyOpenMenu
+                .GetComponent<SubMenuManager>()
+                .CloseMenu();
+        }
         if (this.gameObject.name == "CollectionMenu")
         {
             this
@@ -26,8 +41,13 @@ public class SubMenuManager : MonoBehaviour
                 .GetComponent<CollectionMenuScript>()
                 .RefreshCollection();
         }
+
         GameObject.Find("UICanvas").GetComponent<UIManager>().SubMenuOpen =
             true;
+        GameObject
+            .Find("UICanvas")
+            .GetComponent<UIManager>()
+            .currentlyOpenMenu = this.gameObject;
         Anim.Play(animationNames[0]);
     }
 
@@ -35,6 +55,10 @@ public class SubMenuManager : MonoBehaviour
     {
         GameObject.Find("UICanvas").GetComponent<UIManager>().SubMenuOpen =
             false;
+        GameObject
+            .Find("UICanvas")
+            .GetComponent<UIManager>()
+            .currentlyOpenMenu = null;
         Anim.Play(animationNames[1]);
     }
 
