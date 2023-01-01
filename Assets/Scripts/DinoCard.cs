@@ -15,12 +15,18 @@ public class DinoCard
 
     public Sprite image;
 
+    public string clade;
+
+    public string location;
+
     public DinoCard(
         string name,
         string description,
         Sprite image,
         string type,
-        string height
+        string height,
+        string clade,
+        string location
     )
     {
         this.type = type;
@@ -28,5 +34,7 @@ public class DinoCard
         this.desc = description;
         this.image = image;
         this.height = height;
+        this.clade = clade;
+        this.location = location;
     }
 }

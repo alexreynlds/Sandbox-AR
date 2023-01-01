@@ -10,6 +10,8 @@ public class CollectionMenuScript : MonoBehaviour
 
     public GameObject DisplayBox;
 
+    public GameObject DisplayButtons;
+
     public GameObject GameManager;
 
     public int CardIndex;
@@ -47,6 +49,7 @@ public class CollectionMenuScript : MonoBehaviour
         if (GameManager.GetComponent<GameManagerScript>().ownedCards.Count > 0)
         {
             DisplayBox.SetActive(true);
+            DisplayButtons.SetActive(true);
             cardList.enabled = false;
             DisplayBox
                 .GetComponent<DisplayBoxScript>()
@@ -58,6 +61,7 @@ public class CollectionMenuScript : MonoBehaviour
         {
             cardList.enabled = true;
             DisplayBox.SetActive(false);
+            DisplayButtons.SetActive(false);
             cardList.text = "No cards yet!";
         }
     }

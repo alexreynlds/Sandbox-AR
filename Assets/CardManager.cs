@@ -27,10 +27,12 @@ public class CardManager : MonoBehaviour
                 .GetComponent<GameManagerScript>()
                 .ownedCards
                 .Add(new DinoCard("T. Rex",
-                    "Big and scary",
+                    "King of the tyrant lizards!",
                     dinoImages[0],
                     "Carnivore",
-                    "12 feet"));
+                    "12 feet",
+                    "Threopod",
+                    "Western NA"));
         }
 
         if (cardName == "Triceratops")
@@ -41,10 +43,12 @@ public class CardManager : MonoBehaviour
                 .GetComponent<GameManagerScript>()
                 .ownedCards
                 .Add(new DinoCard("Triceratops",
-                    "Triple the damage!",
+                    "Three-horned face!",
                     dinoImages[1],
                     "Herbivore",
-                    "9 feet"));
+                    "9 feet",
+                    "Chasmosaurinae",
+                    "NA"));
         }
 
         if (cardName == "Pyroraptor")
@@ -54,10 +58,12 @@ public class CardManager : MonoBehaviour
                 .GetComponent<GameManagerScript>()
                 .ownedCards
                 .Add(new DinoCard("Pyroraptor",
-                    "Small and deadly!",
+                    "Fire Thief!",
                     dinoImages[2],
                     "Carnivore",
-                    "5.57 feet"));
+                    "5.57 feet",
+                    "Theropod",
+                    "S France"));
         }
 
         if (cardName == "Therizinisaurus")
@@ -67,10 +73,12 @@ public class CardManager : MonoBehaviour
                 .GetComponent<GameManagerScript>()
                 .ownedCards
                 .Add(new DinoCard("Therizinisaurus",
-                    "Bastard",
+                    "Scythe Lizard!",
                     dinoImages[3],
                     "Herbivore",
-                    "9.8 feet"));
+                    "9.8 feet",
+                    "Theropod",
+                    "Mongolia"));
         }
 
         if (cardName == "Quetzalcoatlus")
@@ -80,10 +88,12 @@ public class CardManager : MonoBehaviour
                 .GetComponent<GameManagerScript>()
                 .ownedCards
                 .Add(new DinoCard("Quetzalcoatlus",
-                    "As weird as its name",
+                    "Aztec Feathered Serpent God!",
                     dinoImages[4],
                     "Carnivore",
-                    "16 feet"));
+                    "16 feet",
+                    "Pterosaur",
+                    "Southern NA"));
         }
     }
 }
