@@ -62,6 +62,8 @@ public class GameManagerScript : MonoBehaviour
 
         arPlaneManager.enabled = true;
         GetComponent<PlacementManager>().enabled = true;
+        GameObject.Find("PlaceButton").GetComponent<Image>().color =
+            Color.green;
         PlacementMode = true;
     }
 
@@ -69,10 +71,13 @@ public class GameManagerScript : MonoBehaviour
     {
         foreach (ARPlane plane in arPlaneManager.trackables)
         {
-            Destroy (plane);
+            Destroy(plane.gameObject);
         }
         Destroy (arPlaneManager);
+        GameObject.Find("AR Session").GetComponent<ARSession>().Reset();
         GetComponent<PlacementManager>().enabled = false;
+        GameObject.Find("PlaceButton").GetComponent<Image>().color =
+            Color.white;
         PlacementMode = false;
     }
 }
