@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class DisplayBoxScript : MonoBehaviour
+{
+    public void DisplayCard(DinoCard card)
+    {
+        this.transform.Find("DinoImage").GetComponent<Image>().sprite =
+            card.image;
+        this.transform.Find("DinoName").GetComponent<TMP_Text>().text =
+            card.name;
+        this.transform.Find("DinoType").GetComponent<TMP_Text>().text =
+            card.type;
+
+        if (card.type == "Herbivore")
+        {
+            this.transform.Find("DinoType").GetComponent<TMP_Text>().color =
+                Color.green;
+        }
+        else if (card.type == "Carnivore")
+        {
+            this.transform.Find("DinoType").GetComponent<TMP_Text>().color =
+                Color.red;
+        }
+        else if (card.type == "Omnivore")
+        {
+            this.transform.Find("DinoType").GetComponent<TMP_Text>().color =
+                Color.yellow;
+        }
+        else
+        {
+            this.transform.Find("DinoType").GetComponent<TMP_Text>().color =
+                Color.white;
+        }
+        this.transform.Find("DinoHeight").GetComponent<TMP_Text>().text =
+            card.height;
+
+        this.transform.Find("DinoDescription").GetComponent<TMP_Text>().text =
+            card.desc;
+    }
+}
