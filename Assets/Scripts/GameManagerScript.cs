@@ -44,7 +44,7 @@ public class GameManagerScript : MonoBehaviour
         this.gameObject.GetComponent<CardManager>().AddCard("Quetzalcoatlus");
     }
 
-    public void TogglePlacement()
+    public void TogglePlacement(GameObject testerPrefab)
     {
         if (PlacementMode)
         {
@@ -62,6 +62,7 @@ public class GameManagerScript : MonoBehaviour
             GameObject.Find("XROrigin").AddComponent<ARPlaneManager>();
         arPlaneManager.planePrefab = PlacementPlanePrefab;
 
+        arPlaneManager.requestedDetectionMode = PlaneDetectionMode.Horizontal;
         arPlaneManager.enabled = true;
         GetComponent<PlacementManager>().enabled = true;
         GetComponent<PlacementManager>().SetPrefab(prefab);

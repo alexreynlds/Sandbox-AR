@@ -7,6 +7,8 @@ public class CardManager : MonoBehaviour
 {
     public List<Sprite> dinoImages;
 
+    public List<GameObject> dinoPrefabs;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +34,8 @@ public class CardManager : MonoBehaviour
                     "Carnivore",
                     "12 feet",
                     "Threopod",
-                    "Western NA"));
+                    "Western NA",
+                    dinoPrefabs[0]));
         }
 
         if (cardName == "Triceratops")
@@ -48,7 +51,8 @@ public class CardManager : MonoBehaviour
                     "Herbivore",
                     "9 feet",
                     "Chasmosaurinae",
-                    "NA"));
+                    "NA",
+                    dinoPrefabs[1]));
         }
 
         if (cardName == "Pyroraptor")
@@ -63,7 +67,8 @@ public class CardManager : MonoBehaviour
                     "Carnivore",
                     "5.57 feet",
                     "Theropod",
-                    "S France"));
+                    "S France",
+                    dinoPrefabs[3]));
         }
 
         if (cardName == "Therizinisaurus")
@@ -78,7 +83,8 @@ public class CardManager : MonoBehaviour
                     "Herbivore",
                     "9.8 feet",
                     "Theropod",
-                    "Mongolia"));
+                    "Mongolia",
+                    dinoPrefabs[2]));
         }
 
         if (cardName == "Quetzalcoatlus")
@@ -93,7 +99,8 @@ public class CardManager : MonoBehaviour
                     "Carnivore",
                     "16 feet",
                     "Pterosaur",
-                    "Southern NA"));
+                    "Southern NA",
+                    dinoPrefabs[4]));
         }
     }
 }

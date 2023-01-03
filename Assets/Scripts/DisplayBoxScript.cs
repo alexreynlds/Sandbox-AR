@@ -6,8 +6,11 @@ using UnityEngine.UI;
 
 public class DisplayBoxScript : MonoBehaviour
 {
+    public DinoCard currentCard;
+
     public void DisplayCard(DinoCard card)
     {
+        currentCard = card;
         this.transform.Find("DinoImage").GetComponent<Image>().sprite =
             card.image;
         this.transform.Find("DinoName").GetComponent<TMP_Text>().text =
@@ -47,5 +50,17 @@ public class DisplayBoxScript : MonoBehaviour
 
         this.transform.Find("DinoDescription").GetComponent<TMP_Text>().text =
             card.desc;
+    }
+
+    public void spawnDino()
+    {
+        GameObject
+            .Find("GameManager")
+            .GetComponent<GameManagerScript>()
+            .TogglePlacement(currentCard.prefab);
+        GameObject
+            .Find("CollectionMenu")
+            .GetComponent<SubMenuManager>()
+            .CloseMenu();
     }
 }

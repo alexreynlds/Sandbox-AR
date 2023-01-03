@@ -19,6 +19,8 @@ public class DinoCard
 
     public string location;
 
+    public GameObject prefab;
+
     public DinoCard(
         string name,
         string description,
@@ -26,7 +28,8 @@ public class DinoCard
         string type,
         string height,
         string clade,
-        string location
+        string location,
+        GameObject prefab
     )
     {
         this.type = type;
@@ -36,5 +39,6 @@ public class DinoCard
         this.height = height;
         this.clade = clade;
         this.location = location;
+        this.prefab = prefab;
     }
 }

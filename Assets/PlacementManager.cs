@@ -32,7 +32,6 @@ public class PlacementManager : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            Debug.Log(Input.GetTouch(0).position);
             touchPosition = Input.GetTouch(0).position;
             return true;
         }
@@ -64,8 +63,6 @@ public class PlacementManager : MonoBehaviour
             )
             {
                 var hitPose = hits[0].pose;
-
-                Debug.Log (touchPosition);
                 if (touchPosition.y > 300)
                 {
                     if (spawnedObject == null)
