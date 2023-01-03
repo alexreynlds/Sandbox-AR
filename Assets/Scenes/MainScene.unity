@@ -2007,7 +2007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00aa2168bab8145e1a2a5db5c1cd5cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6292888672744572528, guid: 80419013c23d74d979c64916cb757bc4, type: 3}
+  prefab: {fileID: 4087933771905169892, guid: ccb984e7979b54f358e6b4a6c830b71a, type: 3}
   arRaycastManager: {fileID: 0}
   arCamera: {fileID: 104378984}
 --- !u!1 &609233576

@@ -8,7 +8,7 @@ public class PlacementManager : MonoBehaviour
 {
     public GameObject prefab;
 
-    private GameObject spawnedObject;
+    public GameObject spawnedObject;
 
     public ARRaycastManager arRaycastManager;
 
@@ -29,12 +29,18 @@ public class PlacementManager : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
+            Debug.Log(Input.GetTouch(0).position);
             touchPosition = Input.GetTouch(0).position;
             return true;
         }
 
         touchPosition = default;
         return false;
+    }
+
+    public void SetPrefab(GameObject newPrefab)
+    {
+        prefab = newPrefab;
     }
 
     // Update is called once per frame
@@ -51,14 +57,18 @@ public class PlacementManager : MonoBehaviour
         {
             var hitPose = hits[0].pose;
 
-            if (spawnedObject == null)
+            Debug.Log (touchPosition);
+            if (touchPosition.y > 300)
             {
-                spawnedObject =
-                    Instantiate(prefab, hitPose.position, hitPose.rotation);
-            }
-            else
-            {
-                spawnedObject.transform.position = hitPose.position;
+                if (spawnedObject == null)
+                {
+                    spawnedObject =
+                        Instantiate(prefab, hitPose.position, hitPose.rotation);
+                }
+                else
+                {
+                    spawnedObject.transform.position = hitPose.position;
+                }
             }
         }
     }

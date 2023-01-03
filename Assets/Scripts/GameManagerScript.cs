@@ -19,6 +19,8 @@ public class GameManagerScript : MonoBehaviour
 
     private ARPlaneManager arPlaneManager;
 
+    public GameObject testerPrefab;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -50,11 +52,11 @@ public class GameManagerScript : MonoBehaviour
         }
         else
         {
-            StartPlacement();
+            StartPlacement (testerPrefab);
         }
     }
 
-    public void StartPlacement()
+    public void StartPlacement(GameObject prefab)
     {
         arPlaneManager =
             GameObject.Find("XROrigin").AddComponent<ARPlaneManager>();
@@ -62,6 +64,7 @@ public class GameManagerScript : MonoBehaviour
 
         arPlaneManager.enabled = true;
         GetComponent<PlacementManager>().enabled = true;
+        GetComponent<PlacementManager>().SetPrefab(prefab);
         GameObject.Find("PlaceButton").GetComponent<Image>().color =
             Color.green;
         PlacementMode = true;
@@ -74,6 +77,7 @@ public class GameManagerScript : MonoBehaviour
             Destroy(plane.gameObject);
         }
         Destroy (arPlaneManager);
+        Destroy(this.gameObject.GetComponent<PlacementManager>().spawnedObject);
         GameObject.Find("AR Session").GetComponent<ARSession>().Reset();
         GetComponent<PlacementManager>().enabled = false;
         GameObject.Find("PlaceButton").GetComponent<Image>().color =
