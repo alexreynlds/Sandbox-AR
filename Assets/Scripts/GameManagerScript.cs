@@ -52,6 +52,33 @@ public class GameManagerScript : MonoBehaviour
         }
         else
         {
+            if (
+                GameObject
+                    .Find("UICanvas")
+                    .GetComponent<UIManager>()
+                    .currentlyOpenMenu !=
+                null
+            )
+            {
+                GameObject
+                    .Find("UICanvas")
+                    .GetComponent<UIManager>()
+                    .currentlyOpenMenu
+                    .GetComponent<SubMenuManager>()
+                    .CloseMenu();
+            }
+            if (
+                GameObject
+                    .Find("XROrigin")
+                    .GetComponent<ScanningScript>()
+                    .Scanning
+            )
+            {
+                GameObject
+                    .Find("XROrigin")
+                    .GetComponent<ScanningScript>()
+                    .StopScanning();
+            }
             StartPlacement (testerPrefab);
         }
     }

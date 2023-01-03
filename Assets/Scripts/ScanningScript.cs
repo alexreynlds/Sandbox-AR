@@ -49,11 +49,23 @@ public class ScanningScript : MonoBehaviour
     // }
     public void StartScanning()
     {
+        if (
+            GameObject
+                .Find("GameManager")
+                .GetComponent<GameManagerScript>()
+                .PlacementMode
+        )
+        {
+            GameObject
+                .Find("GameManager")
+                .GetComponent<GameManagerScript>()
+                .StopPlacement();
+        }
         CreateLibrary();
         m_TrackedImageManager.enabled = true;
         Scanning = true;
         scanningUI.SetActive(true);
-
+        GameObject.Find("ScanButton").GetComponent<Image>().color = Color.green;
         m_TrackedImageManager.trackedImagesChanged += OnChanged;
     }
 
@@ -62,6 +74,7 @@ public class ScanningScript : MonoBehaviour
         // m_TrackedImageManager.trackedImagesChanged -= OnChanged;
         m_TrackedImageManager.enabled = false;
         GameObject.Find("AR Session").GetComponent<ARSession>().Reset();
+        GameObject.Find("ScanButton").GetComponent<Image>().color = Color.white;
         Scanning = false;
         scanningUI.SetActive(false);
     }

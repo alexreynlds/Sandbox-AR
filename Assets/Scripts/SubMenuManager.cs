@@ -21,6 +21,19 @@ public class SubMenuManager : MonoBehaviour
     {
         if (
             GameObject
+                .Find("GameManager")
+                .GetComponent<GameManagerScript>()
+                .PlacementMode
+        )
+        {
+            GameObject
+                .Find("GameManager")
+                .GetComponent<GameManagerScript>()
+                .StopPlacement();
+        }
+
+        if (
+            GameObject
                 .Find("UICanvas")
                 .GetComponent<UIManager>()
                 .currentlyOpenMenu !=
@@ -34,6 +47,7 @@ public class SubMenuManager : MonoBehaviour
                 .GetComponent<SubMenuManager>()
                 .CloseMenu();
         }
+
         if (this.gameObject.name == "CollectionMenu")
         {
             this
