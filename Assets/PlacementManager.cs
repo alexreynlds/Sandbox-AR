@@ -18,11 +18,14 @@ public class PlacementManager : MonoBehaviour
 
     private Vector2 touchPosition = default;
 
+    private bool prefabSet;
+
     // Start is called before the first frame update
     void Awake()
     {
         arRaycastManager =
             GameObject.Find("XROrigin").GetComponent<ARRaycastManager>();
+        prefabSet = false;
     }
 
     bool TryGetTouchPosition(out Vector2 touchPosition)
@@ -41,33 +44,41 @@ public class PlacementManager : MonoBehaviour
     public void SetPrefab(GameObject newPrefab)
     {
         prefab = newPrefab;
+        prefabSet = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!TryGetTouchPosition(out Vector2 touchPosition))
+        if (prefabSet)
         {
-            return;
-        }
-        if (
-            arRaycastManager
-                .Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon)
-        )
-        {
-            var hitPose = hits[0].pose;
-
-            Debug.Log (touchPosition);
-            if (touchPosition.y > 300)
+            if (!TryGetTouchPosition(out Vector2 touchPosition))
             {
-                if (spawnedObject == null)
+                return;
+            }
+            if (
+                arRaycastManager
+                    .Raycast(touchPosition,
+                    hits,
+                    TrackableType.PlaneWithinPolygon)
+            )
+            {
+                var hitPose = hits[0].pose;
+
+                Debug.Log (touchPosition);
+                if (touchPosition.y > 300)
                 {
-                    spawnedObject =
-                        Instantiate(prefab, hitPose.position, hitPose.rotation);
-                }
-                else
-                {
-                    spawnedObject.transform.position = hitPose.position;
+                    if (spawnedObject == null)
+                    {
+                        spawnedObject =
+                            Instantiate(prefab,
+                            hitPose.position,
+                            hitPose.rotation);
+                    }
+                    else
+                    {
+                        spawnedObject.transform.position = hitPose.position;
+                    }
                 }
             }
         }

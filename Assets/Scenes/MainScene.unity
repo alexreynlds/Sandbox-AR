@@ -1962,6 +1962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacementMode: 0
   PlacementPlanePrefab: {fileID: 109779604023541454, guid: 8144c2cd7cd2541bb9ae19219512b391, type: 3}
+  testerPrefab: {fileID: 4087933771905169892, guid: ccb984e7979b54f358e6b4a6c830b71a, type: 3}
 --- !u!4 &596113737
 Transform:
   m_ObjectHideFlags: 0
@@ -2008,6 +2009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 4087933771905169892, guid: ccb984e7979b54f358e6b4a6c830b71a, type: 3}
+  spawnedObject: {fileID: 0}
   arRaycastManager: {fileID: 0}
   arCamera: {fileID: 104378984}
 --- !u!1 &609233576
