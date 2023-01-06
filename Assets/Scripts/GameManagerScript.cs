@@ -123,14 +123,14 @@ public class GameManagerScript : MonoBehaviour
             GetComponent<PlacementManager>()
                 .spawnedObject
                 .transform
-                .Rotate(0, -90, 0);
+                .Rotate(0, 90, 0);
         }
         if (dir == "right")
         {
             GetComponent<PlacementManager>()
                 .spawnedObject
                 .transform
-                .Rotate(0, 90, 0);
+                .Rotate(0, -90, 0);
         }
     }
 

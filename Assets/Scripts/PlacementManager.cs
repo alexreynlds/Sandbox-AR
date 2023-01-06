@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -66,7 +67,9 @@ public class PlacementManager : MonoBehaviour
             )
             {
                 var hitPose = hits[0].pose;
-                if (touchPosition.y > 300)
+
+                // if (touchPosition.y > 300)
+                if (!IsPointerOverUIObject(Input.GetTouch(0)))
                 {
                     if (spawnedObject == null)
                     {
@@ -92,5 +95,17 @@ public class PlacementManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private bool IsPointerOverUIObject(Touch touch)
+    {
+        PointerEventData eventDataCurrentPosition =
+            new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position =
+            new Vector2(touch.position.x, touch.position.y);
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll (eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 }
