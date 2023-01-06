@@ -71,6 +71,7 @@ public class PlacementManager : MonoBehaviour
                             Instantiate(prefab,
                             hitPose.position,
                             hitPose.rotation);
+                        Handheld.Vibrate();
                     }
                     else
                     {

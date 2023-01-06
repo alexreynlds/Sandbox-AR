@@ -55,7 +55,7 @@ public class SubMenuManager : MonoBehaviour
                 .GetComponent<CollectionMenuScript>()
                 .RefreshCollection();
         }
-
+        Handheld.Vibrate();
         GameObject.Find("UICanvas").GetComponent<UIManager>().SubMenuOpen =
             true;
         GameObject
