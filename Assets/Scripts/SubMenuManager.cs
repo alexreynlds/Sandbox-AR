@@ -55,7 +55,17 @@ public class SubMenuManager : MonoBehaviour
                 .GetComponent<CollectionMenuScript>()
                 .RefreshCollection();
         }
-        Handheld.Vibrate();
+
+        if (
+            GameObject
+                .Find("GameManager")
+                .GetComponent<GameManagerScript>()
+                .HapticFeedback
+        )
+        {
+            Handheld.Vibrate();
+        }
+
         GameObject.Find("UICanvas").GetComponent<UIManager>().SubMenuOpen =
             true;
         GameObject

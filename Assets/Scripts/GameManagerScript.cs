@@ -23,24 +23,30 @@ public class GameManagerScript : MonoBehaviour
 
     public GameObject placementUI;
 
+    public bool HapticFeedback;
+
     // Start is called before the first frame update
     void Awake()
     {
         GetComponent<PlacementManager>().enabled = false;
         PlacementMode = false;
+        HapticFeedback = true;
+    }
+
+    void Update()
+    {
     }
 
     // Update is called once per frame
     public void ResetCollection()
     {
-        Handheld.Vibrate();
+        if (HapticFeedback) Handheld.Vibrate();
         ownedCards = new List<DinoCard>();
     }
 
     public void UnlockAll()
     {
-        Handheld.Vibrate();
-        ResetCollection();
+        if (HapticFeedback) Handheld.Vibrate();
         this.gameObject.GetComponent<CardManager>().AddCard("T. Rex");
         this.gameObject.GetComponent<CardManager>().AddCard("Triceratops");
         this.gameObject.GetComponent<CardManager>().AddCard("Pyroraptor");

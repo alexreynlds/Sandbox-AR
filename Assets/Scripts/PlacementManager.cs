@@ -71,7 +71,15 @@ public class PlacementManager : MonoBehaviour
                             Instantiate(prefab,
                             hitPose.position,
                             hitPose.rotation);
-                        Handheld.Vibrate();
+                        if (
+                            GameObject
+                                .Find("GameManager")
+                                .GetComponent<GameManagerScript>()
+                                .HapticFeedback
+                        )
+                        {
+                            Handheld.Vibrate();
+                        }
                     }
                     else
                     {

@@ -49,7 +49,15 @@ public class ScanningScript : MonoBehaviour
     // }
     public void StartScanning()
     {
-        Handheld.Vibrate();
+        if (
+            GameObject
+                .Find("GameManager")
+                .GetComponent<GameManagerScript>()
+                .HapticFeedback
+        )
+        {
+            Handheld.Vibrate();
+        }
         if (
             GameObject
                 .Find("GameManager")
@@ -118,7 +126,15 @@ public class ScanningScript : MonoBehaviour
                     .Find("GameManager")
                     .GetComponent<CardManager>()
                     .AddCard(newImage.referenceImage.name);
-                Handheld.Vibrate();
+                if (
+                    GameObject
+                        .Find("GameManager")
+                        .GetComponent<GameManagerScript>()
+                        .HapticFeedback
+                )
+                {
+                    Handheld.Vibrate();
+                }
                 StopScanning();
             }
             if (found)

@@ -54,7 +54,15 @@ public class DisplayBoxScript : MonoBehaviour
 
     public void spawnDino()
     {
-        Handheld.Vibrate();
+        if (
+            GameObject
+                .Find("GameManager")
+                .GetComponent<GameManagerScript>()
+                .HapticFeedback
+        )
+        {
+            Handheld.Vibrate();
+        }
         GameObject
             .Find("GameManager")
             .GetComponent<GameManagerScript>()
