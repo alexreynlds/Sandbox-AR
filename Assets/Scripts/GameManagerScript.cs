@@ -25,12 +25,17 @@ public class GameManagerScript : MonoBehaviour
 
     public bool HapticFeedback;
 
+    public bool PlanesExist;
+
+    public GameObject scanningVideo;
+
     // Start is called before the first frame update
     void Awake()
     {
         GetComponent<PlacementManager>().enabled = false;
         PlacementMode = false;
         HapticFeedback = true;
+        PlanesExist = false;
     }
 
     void Update()
@@ -89,6 +94,7 @@ public class GameManagerScript : MonoBehaviour
                     .GetComponent<ScanningScript>()
                     .StopScanning();
             }
+
             StartPlacement (testerPrefab);
         }
     }
@@ -96,6 +102,7 @@ public class GameManagerScript : MonoBehaviour
     public void StartPlacement(GameObject prefab)
     {
         placementUI.SetActive(true);
+        scanningVideo.SetActive(true);
         arPlaneManager =
             GameObject.Find("XROrigin").AddComponent<ARPlaneManager>();
         arPlaneManager.planePrefab = PlacementPlanePrefab;
@@ -107,6 +114,24 @@ public class GameManagerScript : MonoBehaviour
         GameObject.Find("PlaceButton").GetComponent<Image>().color =
             Color.green;
         PlacementMode = true;
+    }
+
+    public void RotatePlacement(string dir)
+    {
+        if (dir == "left")
+        {
+            GetComponent<PlacementManager>()
+                .spawnedObject
+                .transform
+                .Rotate(0, -90, 0);
+        }
+        if (dir == "right")
+        {
+            GetComponent<PlacementManager>()
+                .spawnedObject
+                .transform
+                .Rotate(0, 90, 0);
+        }
     }
 
     public void StopPlacement()

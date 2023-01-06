@@ -20,12 +20,15 @@ public class PlacementManager : MonoBehaviour
 
     private bool prefabSet;
 
+    public GameObject PlacementRotateButtons;
+
     // Start is called before the first frame update
     void Awake()
     {
         arRaycastManager =
             GameObject.Find("XROrigin").GetComponent<ARRaycastManager>();
         prefabSet = false;
+        PlacementRotateButtons.SetActive(false);
     }
 
     bool TryGetTouchPosition(out Vector2 touchPosition)
@@ -71,6 +74,7 @@ public class PlacementManager : MonoBehaviour
                             Instantiate(prefab,
                             hitPose.position,
                             hitPose.rotation);
+                        PlacementRotateButtons.SetActive(true);
                         if (
                             GameObject
                                 .Find("GameManager")
