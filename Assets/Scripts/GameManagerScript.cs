@@ -21,6 +21,8 @@ public class GameManagerScript : MonoBehaviour
 
     public GameObject testerPrefab;
 
+    public GameObject placementUI;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -31,11 +33,13 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     public void ResetCollection()
     {
+        Handheld.Vibrate();
         ownedCards = new List<DinoCard>();
     }
 
     public void UnlockAll()
     {
+        Handheld.Vibrate();
         ResetCollection();
         this.gameObject.GetComponent<CardManager>().AddCard("T. Rex");
         this.gameObject.GetComponent<CardManager>().AddCard("Triceratops");
@@ -85,6 +89,7 @@ public class GameManagerScript : MonoBehaviour
 
     public void StartPlacement(GameObject prefab)
     {
+        placementUI.SetActive(true);
         arPlaneManager =
             GameObject.Find("XROrigin").AddComponent<ARPlaneManager>();
         arPlaneManager.planePrefab = PlacementPlanePrefab;
@@ -100,6 +105,7 @@ public class GameManagerScript : MonoBehaviour
 
     public void StopPlacement()
     {
+        placementUI.SetActive(false);
         foreach (ARPlane plane in arPlaneManager.trackables)
         {
             Destroy(plane.gameObject);
