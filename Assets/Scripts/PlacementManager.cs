@@ -15,10 +15,9 @@ public class PlacementManager : MonoBehaviour
 
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
-    public Camera arCamera;
+    public GameObject arCamera;
 
-    private Vector2 touchPosition = default;
-
+    // private Vector2 touchPosition = default;
     private bool prefabSet;
 
     public GameObject PlacementRotateButtons;
@@ -30,6 +29,7 @@ public class PlacementManager : MonoBehaviour
             GameObject.Find("XROrigin").GetComponent<ARRaycastManager>();
         prefabSet = false;
         PlacementRotateButtons.SetActive(false);
+        arCamera = GameObject.Find("MainCamera");
     }
 
     bool TryGetTouchPosition(out Vector2 touchPosition)
@@ -76,7 +76,7 @@ public class PlacementManager : MonoBehaviour
                         spawnedObject =
                             Instantiate(prefab,
                             hitPose.position,
-                            hitPose.rotation);
+                            Quaternion.Euler(0, 180, 0));
                         PlacementRotateButtons.SetActive(true);
                         if (
                             GameObject

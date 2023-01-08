@@ -9,15 +9,20 @@ public class LookAt : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.Find("XROrigin");
+        target = GameObject.Find("MainCamera");
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.rotation =
-            Quaternion
-                .LookRotation(target.transform.position -
-                this.transform.position);
+        // this.transform.rotation =
+        //     Quaternion
+        //         .LookRotation(target.transform.position -
+        //         this.transform.position);
+        this
+            .transform
+            .LookAt(this.transform.position +
+            target.transform.rotation * Vector3.forward,
+            target.transform.rotation * Vector3.up);
     }
 }
