@@ -20,6 +20,11 @@ public class UIManager : MonoBehaviour
 
     public GameObject XROrigin;
 
+    [Header("Scanning Screens")]
+    public GameObject successScreen;
+
+    public GameObject failureScreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,5 +89,19 @@ public class UIManager : MonoBehaviour
     {
         anim.Play("CloseMenu");
         menuOpen = false;
+    }
+
+    public IEnumerator ShowSuccessPopup(float waitTime)
+    {
+        successScreen.SetActive(true);
+        yield return new WaitForSeconds(waitTime);
+        successScreen.SetActive(false);
+    }
+
+    public IEnumerator ShowFailurePopup(float waitTime)
+    {
+        failureScreen.SetActive(true);
+        yield return new WaitForSeconds(waitTime);
+        failureScreen.SetActive(false);
     }
 }

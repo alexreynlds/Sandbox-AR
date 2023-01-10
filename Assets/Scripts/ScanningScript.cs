@@ -36,17 +36,6 @@ public class ScanningScript : MonoBehaviour
         Scanning = false;
     }
 
-    // public void ToggleScan()
-    // {
-    //     if (Scanning)
-    //     {
-    //         StopScanning();
-    //     }
-    //     else
-    //     {
-    //         StartScanning();
-    //     }
-    // }
     public void StartScanning()
     {
         if (
@@ -135,14 +124,18 @@ public class ScanningScript : MonoBehaviour
                 {
                     Handheld.Vibrate();
                 }
+                StartCoroutine(GameObject
+                    .Find("UICanvas")
+                    .GetComponent<UIManager>()
+                    .ShowSuccessPopup(2.5f));
                 StopScanning();
             }
             if (found)
             {
-                Debug
-                    .Log("Debug >> Already owned: " +
-                    newImage.referenceImage.name);
-
+                StartCoroutine(GameObject
+                    .Find("UICanvas")
+                    .GetComponent<UIManager>()
+                    .ShowFailurePopup(2.5f));
                 StopScanning();
             }
         }
