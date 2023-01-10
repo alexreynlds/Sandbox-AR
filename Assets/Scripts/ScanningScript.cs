@@ -127,7 +127,7 @@ public class ScanningScript : MonoBehaviour
                 StartCoroutine(GameObject
                     .Find("UICanvas")
                     .GetComponent<UIManager>()
-                    .ShowSuccessPopup(2.5f));
+                    .ShowSuccessPopup());
                 StopScanning();
             }
             if (found)
@@ -135,7 +135,7 @@ public class ScanningScript : MonoBehaviour
                 StartCoroutine(GameObject
                     .Find("UICanvas")
                     .GetComponent<UIManager>()
-                    .ShowFailurePopup(2.5f));
+                    .ShowFailurePopup());
                 StopScanning();
             }
         }

@@ -12,6 +12,10 @@ public class UIManager : MonoBehaviour
 
     public AnimationClip closeMenuAnimation;
 
+    public AnimationClip SuccessMenuShow;
+
+    public AnimationClip SuccessMenuHide;
+
     public Animation anim;
 
     public bool SubMenuOpen;
@@ -91,17 +95,19 @@ public class UIManager : MonoBehaviour
         menuOpen = false;
     }
 
-    public IEnumerator ShowSuccessPopup(float waitTime)
+    public IEnumerator ShowSuccessPopup()
     {
         successScreen.SetActive(true);
-        yield return new WaitForSeconds(waitTime);
-        successScreen.SetActive(false);
+        anim.Play("SuccessMenuShow");
+        yield return new WaitForSeconds(3.0f);
+        anim.Play("SuccessMenuHide");
     }
 
-    public IEnumerator ShowFailurePopup(float waitTime)
+    public IEnumerator ShowFailurePopup()
     {
         failureScreen.SetActive(true);
-        yield return new WaitForSeconds(waitTime);
-        failureScreen.SetActive(false);
+        anim.Play("FailureMenuShow");
+        yield return new WaitForSeconds(3.0f);
+        anim.Play("FailureMenuHide");
     }
 }
