@@ -29,6 +29,10 @@ public class UIManager : MonoBehaviour
 
     public GameObject failureScreen;
 
+    public GameObject successPopup;
+
+    public GameObject failurePopup;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +63,7 @@ public class UIManager : MonoBehaviour
     {
         if (XROrigin.GetComponent<ScanningScript>().Scanning)
         {
-            XROrigin.GetComponent<ScanningScript>().StopScanning();
+            XROrigin.GetComponent<ScanningScript>().StopScanning(0);
         }
         else
         {
@@ -95,19 +99,25 @@ public class UIManager : MonoBehaviour
         menuOpen = false;
     }
 
-    public IEnumerator ShowSuccessPopup()
+    public void showSuccessPopup()
     {
-        successScreen.SetActive(true);
-        anim.Play("SuccessMenuShow");
-        yield return new WaitForSeconds(3.0f);
-        anim.Play("SuccessMenuHide");
+        var newSuccessPopup =
+            Instantiate(successPopup,
+            new Vector3(transform.position.x,
+                transform.position.y,
+                transform.position.z),
+            Quaternion.identity);
+        newSuccessPopup.transform.SetParent(this.gameObject.transform);
     }
 
-    public IEnumerator ShowFailurePopup()
+    public void showFailurePopup()
     {
-        failureScreen.SetActive(true);
-        anim.Play("FailureMenuShow");
-        yield return new WaitForSeconds(3.0f);
-        anim.Play("FailureMenuHide");
+        var newFailurePopup =
+            Instantiate(failurePopup,
+            new Vector3(transform.position.x,
+                transform.position.y,
+                transform.position.z),
+            Quaternion.identity);
+        newFailurePopup.transform.SetParent(this.gameObject.transform);
     }
 }

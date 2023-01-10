@@ -20,6 +20,8 @@ public class ScanningScript : MonoBehaviour
 
     public bool Scanning;
 
+    public bool cardAdded;
+
     void Awake()
     {
         m_TrackedImageManager =
@@ -59,21 +61,42 @@ public class ScanningScript : MonoBehaviour
                 .GetComponent<GameManagerScript>()
                 .StopPlacement();
         }
+        cardAdded = false;
         CreateLibrary();
         m_TrackedImageManager.enabled = true;
         Scanning = true;
         scanningUI.SetActive(true);
         GameObject.Find("ScanButton").GetComponent<Image>().color = Color.green;
+        Debug
+            .Log(GameObject
+                .Find("GameManager")
+                .GetComponent<GameManagerScript>()
+                .ownedCards
+                .Count);
         m_TrackedImageManager.trackedImagesChanged += OnChanged;
     }
 
-    public void StopScanning()
+    public void StopScanning(int mode)
     {
         // m_TrackedImageManager.trackedImagesChanged -= OnChanged;
         m_TrackedImageManager.enabled = false;
         GameObject.Find("AR Session").GetComponent<ARSession>().Reset();
         GameObject.Find("ScanButton").GetComponent<Image>().color = Color.white;
         Scanning = false;
+        if (cardAdded)
+        {
+            GameObject
+                .Find("UICanvas")
+                .GetComponent<UIManager>()
+                .showSuccessPopup();
+        }
+        else if (!cardAdded)
+        {
+            GameObject
+                .Find("UICanvas")
+                .GetComponent<UIManager>()
+                .showFailurePopup();
+        }
         scanningUI.SetActive(false);
     }
 
@@ -83,6 +106,7 @@ public class ScanningScript : MonoBehaviour
         {
             bool found = false;
 
+            // bool cardAdded = false;
             if (
                 GameObject
                     .Find("GameManager")
@@ -124,19 +148,16 @@ public class ScanningScript : MonoBehaviour
                 {
                     Handheld.Vibrate();
                 }
-                StartCoroutine(GameObject
-                    .Find("UICanvas")
-                    .GetComponent<UIManager>()
-                    .ShowSuccessPopup());
-                StopScanning();
+                cardAdded = true;
+                StopScanning(1);
             }
             if (found)
             {
-                StartCoroutine(GameObject
-                    .Find("UICanvas")
-                    .GetComponent<UIManager>()
-                    .ShowFailurePopup());
-                StopScanning();
+                // StartCoroutine(GameObject
+                //     .Find("UICanvas")
+                //     .GetComponent<UIManager>()
+                //     .ShowFailurePopup());
+                StopScanning(2);
             }
         }
 

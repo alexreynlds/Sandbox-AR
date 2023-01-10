@@ -92,7 +92,7 @@ public class GameManagerScript : MonoBehaviour
                 GameObject
                     .Find("XROrigin")
                     .GetComponent<ScanningScript>()
-                    .StopScanning();
+                    .StopScanning(0);
             }
 
             StartPlacement (testerPrefab);
